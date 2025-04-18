@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sign Up</title>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+</head>
+<body>
+  <h1>Sign Up</h1>
+  
+  <input type="email" id="email" placeholder="Email">
+  <input type="password" id="password" placeholder="Password">
+  <button onclick="signup()">Sign Up</button>
+  <p><a href="login.html">Back to Login</a></p>
+
+
+  <script>
+    const firebaseConfig = {
+  apiKey: "AIzaSyBSn17tNN7uYcxHbFDgFG4vK19dZwdNmWk",
+  authDomain: "idata-login-36af4.firebaseapp.com",
+  projectId: "idata-login-36af4",
+  storageBucket: "idata-login-36af4.firebasestorage.app",
+  messagingSenderId: "369341411355",
+  appId: "1:369341411355:web:e8b003bd9de76c19bd88be",
+  measurementId: "G-QQ3Q2FFP46"
+};
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    
+function signup() {
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  auth.createUserWithEmailAndPassword(email, password)
+    .then(() => window.location.href = 'dashboard.html')
+    .catch(error => alert(error.message));
+}
+
+  </script>
+</body>
+</html>

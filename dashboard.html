@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+</head>
+<body>
+  <h1>Dashboard</h1>
+  
+  <p>Welcome! You are logged in.</p>
+  <button onclick="logout()">Logout</button>
+
+
+  <script>
+    const firebaseConfig = {
+  apiKey: "AIzaSyBSn17tNN7uYcxHbFDgFG4vK19dZwdNmWk",
+  authDomain: "idata-login-36af4.firebaseapp.com",
+  projectId: "idata-login-36af4",
+  storageBucket: "idata-login-36af4.firebasestorage.app",
+  messagingSenderId: "369341411355",
+  appId: "1:369341411355:web:e8b003bd9de76c19bd88be",
+  measurementId: "G-QQ3Q2FFP46"
+};
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    
+auth.onAuthStateChanged(user => {
+  if (!user) {
+    window.location.href = 'login.html';
+  }
+});
+
+function logout() {
+  auth.signOut().then(() => window.location.href = 'login.html');
+}
+
+  </script>
+</body>
+</html>
